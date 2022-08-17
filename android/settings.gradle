@@ -1,3 +1,26 @@
 include ':lib'
 include ':@mauron85_react-native-background-geolocation-common'
 project(':@mauron85_react-native-background-geolocation-common').projectDir = new File(rootProject.projectDir, './common')
+
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        jcenter()
+        // repo for react-native
+        // https://mvnrepository.com/artifact/com.facebook.react/react-native?repo=springio-plugins-release
+        maven {
+            url 'http://repo.spring.io/plugins-release/'
+            name 'Spring Plugins'
+        }
+    }
+}
